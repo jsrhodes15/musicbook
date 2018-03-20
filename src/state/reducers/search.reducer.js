@@ -1,4 +1,5 @@
 import { SET_SEARCH_RESULTS } from '../actionTypes';
+
 const initialState = {
   results: ''
 }
@@ -9,7 +10,7 @@ const behaviors = {
   }
 }
 
-export default function(state ={}, action) {
+export default function(state = initialState, action) {
   const behavior = behaviors[action.type]
   return behavior ? behavior(state, action) : state
 }
