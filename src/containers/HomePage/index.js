@@ -59,7 +59,7 @@ class HomePage extends Component {
   }
 }
 
-const gridColumns = [{value: 'trackName', displayName: 'Title'}]
+const gridColumns = [{value: 'trackName', displayName: 'Title'}, {value: 'artist', displayName: 'Artist'}]
 const mapStateToProps = state => {
   const { fieldValue, searchError, previousSearch, resultCount } = state.searchState;
   return {

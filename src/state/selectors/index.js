@@ -7,6 +7,7 @@ export const getSearchResultsForList = createSelector(
   (searchResults) => {
     if (searchResults && searchResults.length) {
       return searchResults.map(result => ({
+        artist: result.artistName,
         trackId: result.trackId,
         time: result.trackTimeMillis,
         album: result.collectionCensoredName,
