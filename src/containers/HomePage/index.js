@@ -5,8 +5,12 @@ import {
   getSearchResults,
   setSearchValue,
 } from '../../state/actions/search.actions';
+import {
+  getSearchResultsForList 
+} from '../../state/selectors';
 
 import Search from '../../components/Search';
+import SearchResults from '../../components/SearchResults';
 
 class HomePage extends Component {
   handleSubmit = (event) => {
@@ -20,7 +24,15 @@ class HomePage extends Component {
 
   }
   render() {
-    const { fieldValue, setSearchValue , searchError } = this.props;
+    const {
+      fieldValue,
+      searchError,
+      resultCount,
+      previousSearch,
+      searchResults,
+      setSearchValue,
+    } = this.props;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -33,15 +45,28 @@ class HomePage extends Component {
           handleSubmit={this.handleSubmit}
           error={searchError}
         />
+        {!!searchResults.length &&
+        <SearchResults
+          results={searchResults}
+          resultCount={resultCount}
+          searchValue={previousSearch}
+        />
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  fieldValue: state.searchState.fieldValue,
-  searchError: state.searchState.searchError,
-});
+const mapStateToProps = state => {
+  const { fieldValue, searchError, previousSearch, resultCount } = state.searchState;
+  return {
+    fieldValue,
+    searchError,
+    resultCount,
+    previousSearch,
+    searchResults: getSearchResultsForList(state),  
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   setSearchValue: value => dispatch(setSearchValue(value)),
