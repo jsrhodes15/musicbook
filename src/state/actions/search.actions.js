@@ -29,11 +29,12 @@ export function setSearchError() {
   }
 }
 
-export function setSearchResults(results, searchValue) {
+export function setSearchResults(data, searchValue) {
   return {
     type: SET_SEARCH_RESULTS,
     payload: {
-      results,
+      results: data.results,
+      resultCount: data.resultCount,
       searchValue,
     }
   }
@@ -50,8 +51,8 @@ export function getSearchResults(searchValue) {
       dispatch(setSearchResults(results.data, searchValue))
     } catch (error) {  
     dispatch(setSearchError(error));
-    }
     dispatch(resetSearchValue())
+    }
   }
 
 }

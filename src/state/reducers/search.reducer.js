@@ -8,6 +8,7 @@ import {
 const initialState = {
   fieldValue: '',
   results: [],
+  resultCount: 0,
   previousSearch: '',
   searchError: ''
 }
@@ -23,7 +24,9 @@ const behaviors = {
     return {
       ...state,
       results: action.payload.results,
+      resultCount: action.payload.resultCount,
       previousSearch: action.payload.searchValue,
+      fieldValue: '',
       searchError: '',
     }
   },
