@@ -40,7 +40,7 @@ export function createEasterEgg() {
         payload: {
           results: easterEggResults,
           resultCount: easterEggResults.length,
-          searchValue: action.searchValue,
+          searchValue: action.payload.searchValue,
         }
       }      
       
