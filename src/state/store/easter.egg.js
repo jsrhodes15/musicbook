@@ -18,7 +18,7 @@ const easterEggResults = [
     trackId: 4829230,
     trackTimeMillis: 180000,
     collectionCensoredName: "I want to be with you",
-    trackName: "I hope it's not to late for us.",
+    trackName: "I hope it's not to late for us",
   },
   {
     artistName: "Jordan Rhodes",
@@ -26,13 +26,6 @@ const easterEggResults = [
     trackTimeMillis: 120000,
     collectionCensoredName: "A better place",
     trackName: "Take me with you",
-  },
-  {
-    artistName: "Jordan Rhodes",
-    trackId: 4829230,
-    trackTimeMillis: 120000,
-    collectionCensoredName: "Where have you been",
-    trackName: "Can I see you soon?",
   },
 ]
 
