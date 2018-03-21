@@ -30,6 +30,7 @@ class HomePage extends Component {
       resultCount,
       previousSearch,
       searchResults,
+      gridColumns,
       setSearchValue,
     } = this.props;
 
@@ -50,6 +51,7 @@ class HomePage extends Component {
           results={searchResults}
           resultCount={resultCount}
           searchValue={previousSearch}
+          columns={gridColumns}
         />
         }
       </div>
@@ -57,6 +59,7 @@ class HomePage extends Component {
   }
 }
 
+const gridColumns = [{value: 'trackName', displayName: 'Title'}]
 const mapStateToProps = state => {
   const { fieldValue, searchError, previousSearch, resultCount } = state.searchState;
   return {
@@ -64,6 +67,7 @@ const mapStateToProps = state => {
     searchError,
     resultCount,
     previousSearch,
+    gridColumns,
     searchResults: getSearchResultsForList(state),  
   }
 };

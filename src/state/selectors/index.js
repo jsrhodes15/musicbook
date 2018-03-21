@@ -9,6 +9,7 @@ export const getSearchResultsForList = createSelector(
     if (searchResults && searchResults.length) {
       return searchResults.map(result => ({
         trackId: result.trackId,
+        time: result.trackTimeMillis,
         album: result.collectionCensoredName,
         trackName: result.trackName,
       }));

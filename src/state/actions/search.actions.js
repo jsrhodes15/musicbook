@@ -42,7 +42,7 @@ export function setSearchResults(data, searchValue) {
 
 export function getSearchResults(searchValue) {
   return async dispatch => {
-    const formattedValue = searchValue.trim().split(' ').join('+');
+    const formattedValue = searchValue.trim().split(' ').join('+').toLowerCase();
     const searchParams = `&term=${formattedValue}`;
     const url = `${BASE_RESOURCE}${BASE_PARAMS}${searchParams}}`;
     
