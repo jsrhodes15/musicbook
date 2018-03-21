@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 
 const getSearchResults = state => state.searchState.results;
-const getSearchResultCount = state => state.searchState.resultCount;
 
 export const getSearchResultsForList = createSelector(
   getSearchResults,
