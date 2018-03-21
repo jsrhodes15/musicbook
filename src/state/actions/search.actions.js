@@ -29,26 +29,28 @@ export function setSearchError() {
   }
 }
 
-export function setSearchResults(data, searchValue) {
+export function setSearchResults(data, searchValue, cleanedValue) {
   return {
     type: SET_SEARCH_RESULTS,
     payload: {
       results: data.results,
       resultCount: data.resultCount,
-      searchValue,
+      searchValue: searchValue,
+      meta: { cleanedValue }
     }
   }
 } 
 
 export function getSearchResults(searchValue) {
   return async dispatch => {
-    const formattedValue = searchValue.trim().split(' ').join('+').toLowerCase();
+    const cleanedValue = searchValue.trim().toLowerCase();
+    const formattedValue = cleanedValue.split(' ').join('+');
     const searchParams = `&term=${formattedValue}`;
     const url = `${BASE_RESOURCE}${BASE_PARAMS}${searchParams}}`;
     
     try {
       const results = await axios.get(url)
-      dispatch(setSearchResults(results.data, searchValue))
+      dispatch(setSearchResults(results.data, searchValue, cleanedValue))
     } catch (error) {  
     dispatch(setSearchError(error));
     dispatch(resetSearchValue())

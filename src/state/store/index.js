@@ -7,9 +7,11 @@ export default function configureStore(initialState = {}) {
   let middleware = [thunkMiddleware];
 
   if (process.env.NODE_ENV !== 'production') {
+    const createEasterEgg = require('./easter.egg').createEasterEgg;
+    const eggMiddleware = createEasterEgg(); 
     const createLogger = require('redux-logger').createLogger;
     const loggerMiddleware = createLogger();
-    middleware = [ ...middleware, loggerMiddleware ];
+    middleware = [ ...middleware, eggMiddleware, loggerMiddleware ];
   }
 
   return createStore(
