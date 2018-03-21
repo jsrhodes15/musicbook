@@ -1,18 +1,28 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-# Getting started
+## Getting started
 clone the repo
-```git clone```
+```js
+git clone
+```
 
 install node modules
-```npm install```
+```js
+npm install
+```
 or
-```yarn```
+```js
+yarn
+```
 
 fire it up!
-```npm start```
+```js
+npm start
+```
 or
-```yarn run start```
+```js
+yarn run start
+```
 
 
 *try searching for me!*
