@@ -1,25 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSearchResults } from '../../state/actions/search.actions';
+
+import {
+  getSearchResults,
+  setSearchValue,
+} from '../../state/actions/search.actions';
+
+import Search from '../../components/Search';
 
 class HomePage extends Component {
-  componentDidMount() {
-    const { setSearchResults } = this.props;
-    setSearchResults('5');
-  }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const { value, getSearchResults } = this.props;
+    if (value.length < 1) {
+      return false;
+    }
 
+    getSearchResults(value);
+
+  }
   render() {
+    const { value, setSearchValue } = this.props;
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Music Book</h1>
+          <p>Search your favorite artist's name to find titles</p>
         </header>
-        <p className="App-intro">
-          
-        </p>
+        <Search
+          value={value}
+          setSearchValue={setSearchValue}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }
 }
 
-export default connect(null, { setSearchResults })(HomePage);
+const mapStateToProps = state => ({
+  value: state.searchState.value,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setSearchValue: value => dispatch(setSearchValue(value)),
+  getSearchResults: value => dispatch(getSearchResults(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

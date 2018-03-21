@@ -1,10 +1,17 @@
-import { SET_SEARCH_RESULTS } from '../actionTypes';
+import {
+  SET_SEARCH_RESULTS,
+  SET_SEARCH_VALUE,
+} from '../actionTypes';
 
 const initialState = {
-  results: ''
+  value: '',
+  results: [],
 }
 
 const behaviors = {
+  [SET_SEARCH_VALUE](state, action) {
+    return { ...state, value: action.payload }
+  },
   [SET_SEARCH_RESULTS](state, action) {
     return { ...state, results: action.payload }
   }
